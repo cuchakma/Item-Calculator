@@ -1,4 +1,4 @@
-# Prior To Following The Instructions Below, Please Run This Code To Install node_modules
+# Prior To Following The Instructions Below, Please Run This Command Below To Install node_modules
 ## `npm install`
 
 # Getting Started with Create React App
