@@ -1,4 +1,5 @@
 import ExpenseItem from './components/ExpenseItem';
+import Card from './components/Card';
 import './components/Expense.css';
 
 function App() {
@@ -12,11 +13,11 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-        <div className='expenses'>
+        <Card className='expenses'>
           { expenses.map( (value) => {
             return <ExpenseItem key={value.id} expenseTitle={value.title} expenseDate={value.date} amount={value.amount}/>
           }) }
-        </div>
+        </Card>
     </div>
   );
 }
