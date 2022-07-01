@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-const ExpenseFilter = () => {
+const ExpenseFilter = (props) => {
 
     const selectedYear = (event)  => {
-        console.log(event.target.value);
+        props.onYearChangeFilter(event.target.value);
     }
 
     return (

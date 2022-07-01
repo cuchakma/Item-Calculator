@@ -14,15 +14,18 @@ const App = () => {
   ]
 
   const addExpenseHandler = (expense) => {
-    console.log('In App.js');
-    console.log(expense); 
+    
+  }
+
+  const filteredYear = (year) => {
+    
   }
 
   return (
     <div>
         <NewExpense onAddExpense={addExpenseHandler}/>
         <Card className='expenses'>
-          <ExpenseFilter />
+          <ExpenseFilter onYearChangeFilter={filteredYear}/>
           { expenses.map( (value) => {
             return <ExpenseItem key={value.id} expenseTitle={value.title} expenseDate={value.date} amount={value.amount}/>
           }) }
