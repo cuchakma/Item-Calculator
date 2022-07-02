@@ -1,9 +1,9 @@
-import ExpenseItem from './components/Expenses/ExpenseItem';
 import Card from './components/UI/Card';
 import './components/Expenses/Expense.css';
 import NewExpense from './components/NewExpense/NewExpense';
 import ExpenseFilter from './components/Expenses/ExpenseFilter';
 import './components/Expenses/ExpenseFilter.css';
+import ExpensesList from './components/Expenses/ExpensesList';
 import { useState } from 'react';
 
 const DUMMY_EXPENSE = [
@@ -32,15 +32,13 @@ const App = () => {
   const filteredExpenses = expenses.filter( (currentValue) => {
       return filteredYear === currentValue.date.getFullYear().toString()
   });
-  //console.log(filteredExpenses);
+
   return (
     <div>
         <NewExpense onAddExpense={addExpenseHandler}/>
         <Card className='expenses'>
           <ExpenseFilter selected={filteredYear} onYearChangeFilter={filteredChangeYear}/>
-          { filteredExpenses.map( (value) => {
-            return <ExpenseItem key={value.id} expenseTitle={value.title} expenseDate={value.date} amount={value.amount}/>
-          }) }
+          <ExpensesList filteredExpenses={filteredExpenses}/>
         </Card>
     </div>
   );
