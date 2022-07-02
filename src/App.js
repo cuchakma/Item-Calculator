@@ -7,7 +7,7 @@ import './components/Expenses/ExpenseFilter.css';
 import { useState } from 'react';
 
 const DUMMY_EXPENSE = [
-  { id:'1', title: 'Toilet Paper', date:new Date(2022, 6, 30), amount:294.67 },
+  { id:'1', title: 'Toilet Paper', date:new Date(2019, 6, 30), amount:294.67 },
   { id:'2', title: 'Tooth Bursh', date:new Date(2022, 6, 30), amount:294.67 },
   { id:'3', title: 'Deer Skin', date:new Date(2022, 6, 30), amount:294.67 },
   { id:'4', title: 'Merlin\'s Beard', date:new Date(2022, 6, 30), amount:294.67 }
@@ -29,12 +29,16 @@ const App = () => {
       setFilteredYear(year);    
   }
 
+  const filteredExpenses = expenses.filter( (currentValue) => {
+      return filteredYear === currentValue.date.getFullYear().toString()
+  });
+  //console.log(filteredExpenses);
   return (
     <div>
         <NewExpense onAddExpense={addExpenseHandler}/>
         <Card className='expenses'>
           <ExpenseFilter selected={filteredYear} onYearChangeFilter={filteredChangeYear}/>
-          { expenses.map( (value) => {
+          { filteredExpenses.map( (value) => {
             return <ExpenseItem key={value.id} expenseTitle={value.title} expenseDate={value.date} amount={value.amount}/>
           }) }
         </Card>
