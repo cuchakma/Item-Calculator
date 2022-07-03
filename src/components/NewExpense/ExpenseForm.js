@@ -5,7 +5,6 @@ const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
-    const [showForm, hideForm] = useState(true);
 
     const titleChangeHandler = (event) => {
         //state update
@@ -36,14 +35,10 @@ const ExpenseForm = (props) => {
         setEnteredAmount('');
         setEnteredDate('');
 
-        hideForm(false);
+        props.onCancel(false);
     };
-
-    const openForm = (event) => {
-        hideForm(true);
-    }
-
-    const form = <form onSubmit={submitHandler}>
+    
+    return (<form onSubmit={submitHandler}>
                     <div className="new-expense__controls">
                         <div className="new-expense__control">
                             <label>Title</label>
@@ -66,10 +61,7 @@ const ExpenseForm = (props) => {
                             <button type="submit">Add Expense</button>
                         </div>
                     </div>
-                </form>;
-    
-
-    return ( showForm ) ? form : <button type="submit" onClick={openForm}>Add Expense</button>;
+            </form> );
 }
 
 export default ExpenseForm;
