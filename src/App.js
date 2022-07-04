@@ -4,13 +4,16 @@ import NewExpense from './components/NewExpense/NewExpense';
 import ExpenseFilter from './components/Expenses/ExpenseFilter';
 import './components/Expenses/ExpenseFilter.css';
 import ExpensesList from './components/Expenses/ExpensesList';
+import ExpensesChart from './components/Expenses/ExpensesChart';
 import { useState } from 'react';
 
 const DUMMY_EXPENSE = [
   { id:'1', title: 'Toilet Paper', date:new Date(2019, 6, 30), amount:294.67 },
   { id:'2', title: 'Tooth Bursh', date:new Date(2022, 6, 30), amount:294.67 },
   { id:'3', title: 'Deer Skin', date:new Date(2022, 6, 30), amount:294.67 },
-  { id:'4', title: 'Merlin\'s Beard', date:new Date(2022, 6, 30), amount:294.67 }
+  { id:'4', title: 'Merlin\'s Beard', date:new Date(2022, 6, 30), amount:294.67 },
+  { id:'5', title: 'PS$', date:new Date(2019, 7, 30), amount:294.67 }
+
 ];
 
 const App = () => {
@@ -38,6 +41,7 @@ const App = () => {
         <NewExpense onAddExpense={addExpenseHandler}/>
         <Card className='expenses'>
           <ExpenseFilter selected={filteredYear} onYearChangeFilter={filteredChangeYear}/>
+          <ExpensesChart expenses={filteredExpenses}/>
           <ExpensesList filteredExpenses={filteredExpenses}/>
         </Card>
     </div>
